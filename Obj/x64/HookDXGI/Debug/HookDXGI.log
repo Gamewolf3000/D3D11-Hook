@@ -1,0 +1,9 @@
+﻿  JobHandler.cpp
+  SharedMemory.cpp
+  main.cpp
+e:\vs projects\neo hook\codepc\incus\hookdxgi\globaldata.h(59): warning C4244: 'return': conversion from 'DWORD' to 'char', possible loss of data
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4311: '<function-style-cast>': pointer truncation from 'HANDLE' to 'unsigned long'
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4302: '<function-style-cast>': truncation from 'HANDLE' to 'unsigned long'
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(427): warning C4101: 'wireFrame': unreferenced local variable
+  Generating Code...
+  HookDXGI.vcxproj -> E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64D.dll

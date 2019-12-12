@@ -1,0 +1,10 @@
+﻿  main.cpp
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4311: '<function-style-cast>': pointer truncation from 'HANDLE' to 'unsigned long'
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4302: '<function-style-cast>': truncation from 'HANDLE' to 'unsigned long'
+     Creating library E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64.lib and object E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64.exp
+  Generating code
+  2 of 447 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  HookDXGI.vcxproj -> E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64.dll
