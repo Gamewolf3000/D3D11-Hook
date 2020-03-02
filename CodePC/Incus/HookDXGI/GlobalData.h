@@ -9,6 +9,7 @@
 #include "../../Shared/DLLUtils.h"
 #include "JobHandler.h"
 #include "SharedMemory.h"
+#include "../../Shared/SharedData.h"
 
 #include <locale>
 #include <codecvt>
@@ -30,9 +31,10 @@ static HardHook hook_CreateDevice;
 static HardHook hook_CreateDeviceAndSwapChain;
 static ID3D11Device* GlobalDevice = nullptr;
 static ID3D11DeviceContext* GlobalDeviceContext = nullptr;
-static SharedMemory statsMemory(L"D3D11Stats", 10000, false);
+static SharedMemory statsMemory(L"D3D11Stats", sizeof(PerFrameBuffer), false);
 static SharedMemory injectMemory(L"INJECTOR_MEMORY", sizeof(bool) + sizeof(DWORD) + sizeof(char), false);
 static SharedMemory messageMemory(L"MESSAGE_MEMORY", 255, false);
+static PerFrameStats perFrameStats;
 
 struct RasterizerStateData
 {

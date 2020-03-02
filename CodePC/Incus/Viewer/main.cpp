@@ -15,6 +15,7 @@ void PrintMenu()
 
 int main(int argc, char** argv)
 {
+	InitStatsMemory();
 	std::thread thread(InjectThreadFunction);
 
 	std::string input = "";

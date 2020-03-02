@@ -4,6 +4,9 @@
 
 typedef HRESULT(__stdcall *D3D11_DeviceContext_RSSetStateType)(ID3D11DeviceContext*, ID3D11RasterizerState *);
 typedef HRESULT(__stdcall *D3D11_DeviceContext_VSSetShaderType)(ID3D11DeviceContext*, ID3D11VertexShader*, ID3D11ClassInstance*const*, UINT);
+typedef HRESULT(__stdcall *D3D11_DeviceContext_DrawIndexedType)(ID3D11DeviceContext*, UINT, UINT, INT); // 12
+typedef HRESULT(__stdcall *D3D11_DeviceContext_DrawType)(ID3D11DeviceContext*, UINT, UINT); // 13
+
 
 
 
@@ -21,6 +24,9 @@ class DeviceContextOverride
 
 	HardHook hook_RSSetState;
 	HardHook hook_VSSetShader;
+	HardHook hook_DrawIndexed;
+	HardHook hook_Draw;
+
 
 	DeviceContextOverride()
 	{
@@ -47,6 +53,9 @@ public:
 		// Setup Hooks
 		hook_RSSetState.SetupInterface(deviceContext, 43, reinterpret_cast<voidFunc>(RSSetState)); // d3d_4.h 43
 		hook_VSSetShader.SetupInterface(deviceContext, 11, reinterpret_cast<voidFunc>(VSSetShader)); // 11
+		hook_DrawIndexed.SetupInterface(deviceContext, 12, reinterpret_cast<voidFunc>(DrawIndexed));
+		hook_Draw.SetupInterface(deviceContext, 13, reinterpret_cast<voidFunc>(Draw));
+
 		//MessageBoxA(0, "Done setting up devicecontext interface!", "", 0); 11
 
 		return S_OK;
@@ -102,6 +111,7 @@ public:
 		hook_RSSetState.Restore();
 		hr = oRSSetState(devicecontext, pRasterizerState);
 		hook_RSSetState.Inject();
+		++perFrameStats.nrOfRasterizerStates;
 
 		return hr;
 	}
@@ -119,6 +129,48 @@ public:
 		hook_VSSetShader.Restore();
 		hr = oVSSetShader(devicecontext, pVertexShader, ppClassInstances, NumClassInstances);
 		hook_VSSetShader.Inject();
+		++perFrameStats.nrOfVertexShadersUsed;
+		
+		if(D3D11_DEVICE_CONTEXT_TYPE::D3D11_DEVICE_CONTEXT_DEFERRED == deviceContext->GetType())
+			MessageBoxA(0, "DEFFERED!", "", 0);
+
+
+		return hr;
+	}
+
+
+
+
+	static HRESULT __stdcall DrawIndexed(ID3D11DeviceContext* devicecontext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)
+	{
+		return DeviceContextOverride::GetInstance()->DrawIndexedInternal(devicecontext, IndexCount, StartIndexLocation, BaseVertexLocation);
+	}
+
+	HRESULT DrawIndexedInternal(ID3D11DeviceContext* devicecontext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)
+	{
+		HRESULT hr = S_OK;
+		D3D11_DeviceContext_DrawIndexedType oDrawIndexed = (D3D11_DeviceContext_DrawIndexedType)hook_DrawIndexed.call;
+		hook_DrawIndexed.Restore();
+		hr = oDrawIndexed(devicecontext, IndexCount, StartIndexLocation, BaseVertexLocation);
+		hook_DrawIndexed.Inject();
+		++perFrameStats.nrOfDrawIndexedCalls;
+
+		return hr;
+	}
+
+	static HRESULT __stdcall Draw(ID3D11DeviceContext* devicecontext, UINT VertexCount, UINT StartVertexLocation)
+	{
+		return DeviceContextOverride::GetInstance()->DrawInternal(devicecontext, VertexCount, StartVertexLocation);
+	}
+
+	HRESULT DrawInternal(ID3D11DeviceContext* devicecontext, UINT VertexCount, UINT StartVertexLocation)
+	{
+		HRESULT hr = S_OK;
+		D3D11_DeviceContext_DrawType oDraw = (D3D11_DeviceContext_DrawType)hook_Draw.call;
+		hook_Draw.Restore();
+		hr = oDraw(devicecontext, VertexCount, StartVertexLocation);
+		hook_Draw.Inject();
+		++perFrameStats.nrOfDrawCalls;
 
 		return hr;
 	}

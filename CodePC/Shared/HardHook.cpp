@@ -40,7 +40,7 @@ void HardHook::Setup(voidFunc targetFunc, voidFunc trampolineFunc)
 	}
 	else
 	{
-		MessageBoxA(0, "Call was not null!", "Hook setup error", 0);
+		//MessageBoxA(0, "Call was not null!", "Hook setup error", 0);
 	}
 }
 

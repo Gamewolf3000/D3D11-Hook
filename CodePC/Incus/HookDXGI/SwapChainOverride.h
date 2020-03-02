@@ -245,6 +245,14 @@ public:
 				*message = 0;
 		}
 
+		PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
+		PerFrameStats* frameStats = &buffer->stats[buffer->lastWrittenTo];
+		*frameStats = perFrameStats;
+		perFrameStats = PerFrameStats();
+
+		if (buffer->lastWrittenTo != buffer->lastReadFrom)
+			buffer->lastWrittenTo = buffer->lastReadFrom;
+
 		return hr;
 
 

@@ -188,6 +188,7 @@ public:
 		//device->QueryInterface(__uuidof(ID3D11Device5), (void**)&device5);
 
 		// Setup Hooks
+		//MessageBoxA(0, "DeviceOverride injection started", "", 0);
 		hook_CreateBuffer.SetupInterface(device, 3, reinterpret_cast<voidFunc>(CreateBuffer));
 		hook_CreateTexture2D.SetupInterface(device, 5, reinterpret_cast<voidFunc>(CreateTexture2D));
 		hook_CreateRenderTargetView.SetupInterface(device, 9, reinterpret_cast<voidFunc>(CreateRenderTargetView));
@@ -201,6 +202,7 @@ public:
 		hook_CreateDomainShader.SetupInterface(device, 17, reinterpret_cast<voidFunc>(CreateDomainShader));
 		hook_CreateComputeShader.SetupInterface(device, 18, reinterpret_cast<voidFunc>(CreateComputeShader));
 		hook_CreateRasterizerState.SetupInterface(device, 22, reinterpret_cast<voidFunc>(CreateRasterizerState));
+		//MessageBoxA(0, "DeviceOverride injection done", "", 0);
 
 		return S_OK;
 	}

@@ -1,23 +1,38 @@
 #include "Processes.h"
 #include "MenuOptions.h"
 #include "../HookDXGI/SharedMemory.h"
+#include "../../Shared/SharedData.h"
 
 #include <Windows.h>
 #include <string>
 #include <iostream>
 #include <locale>
 #include <codecvt>
+#include <thread>
 
-
-std::string StatsText(unsigned int a)
-{
-	auto input = std::to_string(a);
-	return "Number of spins: " + input + std::string("    ").substr(0, 4 - input.size());
-}
-
-static SharedMemory statsMemory(L"D3D11Stats", 10000, true);
+static SharedMemory statsMemory(L"D3D11Stats", sizeof(PerFrameBuffer), true);
 static SharedMemory messageMemory(L"MESSAGE_MEMORY", 255, true);
 
+void InitStatsMemory()
+{
+	PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
+	*buffer = PerFrameBuffer();
+}
+
+std::string StatsText()
+{
+
+	PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
+	PerFrameStats stats;
+	stats = buffer->stats[1 - buffer->lastReadFrom];
+
+	std::string toReturn = "Draw calls: " + std::to_string(stats.nrOfDrawCalls) + '\n';
+	toReturn += "DrawIndexed calls: " + std::to_string(stats.nrOfDrawIndexedCalls) + '\n';
+	toReturn += "VertexShaders used: " + std::to_string(stats.nrOfVertexShadersUsed) + '\n';
+	toReturn += "RasterizerStates used: " + std::to_string(stats.nrOfRasterizerStates) + '\n';
+
+	return toReturn;
+}
 
 void InjectIntoProgram()
 {
@@ -37,20 +52,26 @@ void InjectIntoProgram()
 
 void DisplayStats()
 {
-	system("cls");
-	unsigned int counter = 0;
+	using namespace std::chrono_literals;
 	while (!(GetKeyState(VK_ESCAPE) & 0x8000))
 	{
-		std::cout << StatsText(counter) << '\r' << std::flush;
-		counter++;
+		PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
+
+		if (buffer->lastReadFrom == buffer->lastWrittenTo)
+		{
+			system("cls");
+			std::cout << StatsText() << '\r' << std::flush;
+			buffer->lastReadFrom = 1 - buffer->lastReadFrom;
+			std::this_thread::sleep_for(0.2s);
+		}
 	}
 }
 
 void ToggleWireframe()
 {
-	unsigned int id = 0;
+	std::string id;
 	std::cout << "State ID: ";
-	std::cin >> id;
-	std::string message = ("TGRS" + std::to_string(id));
+	std::getline(std::cin, id);
+	std::string message = ("TGRS" + id);
 	std::memcpy(messageMemory.GetPointer(), message.c_str(), message.size() + 1); // + null (\0)
 }
