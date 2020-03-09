@@ -8,8 +8,6 @@ typedef HRESULT(__stdcall *D3D11_DeviceContext_DrawIndexedType)(ID3D11DeviceCont
 typedef HRESULT(__stdcall *D3D11_DeviceContext_DrawType)(ID3D11DeviceContext*, UINT, UINT); // 13
 
 
-
-
 class DeviceContextOverride
 {
 	static DeviceContextOverride* instance;
@@ -111,7 +109,7 @@ public:
 		hook_RSSetState.Restore();
 		hr = oRSSetState(devicecontext, pRasterizerState);
 		hook_RSSetState.Inject();
-		++perFrameStats.nrOfRasterizerStates;
+		perFrameStats.nrOfRasterizerStates.fetch_add(1, std::memory_order_relaxed);
 
 		return hr;
 	}
@@ -129,10 +127,7 @@ public:
 		hook_VSSetShader.Restore();
 		hr = oVSSetShader(devicecontext, pVertexShader, ppClassInstances, NumClassInstances);
 		hook_VSSetShader.Inject();
-		++perFrameStats.nrOfVertexShadersUsed;
-		
-		if(D3D11_DEVICE_CONTEXT_TYPE::D3D11_DEVICE_CONTEXT_DEFERRED == deviceContext->GetType())
-			MessageBoxA(0, "DEFFERED!", "", 0);
+		perFrameStats.nrOfVertexShadersUsed.fetch_add(1, std::memory_order_relaxed);
 
 
 		return hr;
@@ -153,7 +148,8 @@ public:
 		hook_DrawIndexed.Restore();
 		hr = oDrawIndexed(devicecontext, IndexCount, StartIndexLocation, BaseVertexLocation);
 		hook_DrawIndexed.Inject();
-		++perFrameStats.nrOfDrawIndexedCalls;
+		perFrameStats.nrOfDrawIndexedCalls.fetch_add(1, std::memory_order_relaxed);
+
 
 		return hr;
 	}
@@ -170,7 +166,7 @@ public:
 		hook_Draw.Restore();
 		hr = oDraw(devicecontext, VertexCount, StartVertexLocation);
 		hook_Draw.Inject();
-		++perFrameStats.nrOfDrawCalls;
+		perFrameStats.nrOfDrawCalls.fetch_add(1, std::memory_order_relaxed);
 
 		return hr;
 	}

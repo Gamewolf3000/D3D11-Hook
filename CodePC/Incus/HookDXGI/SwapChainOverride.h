@@ -245,13 +245,19 @@ public:
 				*message = 0;
 		}
 
-		PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
-		PerFrameStats* frameStats = &buffer->stats[buffer->lastWrittenTo];
-		*frameStats = perFrameStats;
-		perFrameStats = PerFrameStats();
+		if (statsMutex == NULL)
+		{
+			MessageBoxA(0, "mutex was null!", "", 0);
+			return hr;
+		}
 
-		if (buffer->lastWrittenTo != buffer->lastReadFrom)
-			buffer->lastWrittenTo = buffer->lastReadFrom;
+
+		PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
+		DWORD dwWaitResult = WaitForSingleObject(statsMutex, INFINITE);
+		PerFrameStats* frameStats = &buffer->stats[buffer->nextToWriteTo];
+		*frameStats = perFrameStats;
+		ReleaseMutex(statsMutex);
+		perFrameStats = PerFrameStats();
 
 		return hr;
 

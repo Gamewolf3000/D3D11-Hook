@@ -10,11 +10,16 @@
 #include <codecvt>
 #include <thread>
 
+static HANDLE statsMutex;
 static SharedMemory statsMemory(L"D3D11Stats", sizeof(PerFrameBuffer), true);
 static SharedMemory messageMemory(L"MESSAGE_MEMORY", 255, true);
 
 void InitStatsMemory()
 {
+	statsMutex = CreateMutexA(NULL, false, "statsMutex");
+	if (statsMutex == NULL)
+		std::cout << "Error creating stats mutex, GetLastError: " << GetLastError() << std::endl;
+
 	PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
 	*buffer = PerFrameBuffer();
 }
@@ -24,7 +29,13 @@ std::string StatsText()
 
 	PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
 	PerFrameStats stats;
-	stats = buffer->stats[1 - buffer->lastReadFrom];
+	
+	DWORD dwWaitResult = WaitForSingleObject(statsMutex, INFINITE);
+	buffer->nextToWriteTo = 1 - buffer->nextToWriteTo;
+	if(!ReleaseMutex(statsMutex))
+		std::cout << "Error when releasing mutex, GetLastError: " << GetLastError() << std::endl;
+	stats = buffer->stats[1 - buffer->nextToWriteTo];
+
 
 	std::string toReturn = "Draw calls: " + std::to_string(stats.nrOfDrawCalls) + '\n';
 	toReturn += "DrawIndexed calls: " + std::to_string(stats.nrOfDrawIndexedCalls) + '\n';
@@ -57,13 +68,9 @@ void DisplayStats()
 	{
 		PerFrameBuffer* buffer = static_cast<PerFrameBuffer*>(statsMemory.GetPointer());
 
-		if (buffer->lastReadFrom == buffer->lastWrittenTo)
-		{
-			system("cls");
-			std::cout << StatsText() << '\r' << std::flush;
-			buffer->lastReadFrom = 1 - buffer->lastReadFrom;
-			std::this_thread::sleep_for(0.2s);
-		}
+		system("cls");
+		std::cout << StatsText() << '\r' << std::flush;
+		std::this_thread::sleep_for(0.2s);
 	}
 }
 

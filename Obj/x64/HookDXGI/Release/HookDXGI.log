@@ -3,8 +3,8 @@ c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\incus\hookdxgi\deviceoverr
 c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4302: '<function-style-cast>': truncation from 'HANDLE' to 'unsigned long'
      Creating library C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x64/HookDXGI64.lib and object C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x64/HookDXGI64.exp
   Generating code
-  3 of 449 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  11 of 471 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   HookDXGI.vcxproj -> C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x64/HookDXGI64.dll

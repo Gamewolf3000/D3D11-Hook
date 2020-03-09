@@ -14,6 +14,7 @@
 #include <locale>
 #include <codecvt>
 #include <string>
+#include <Windows.h>
 
 struct StoredResource
 {
@@ -31,6 +32,7 @@ static HardHook hook_CreateDevice;
 static HardHook hook_CreateDeviceAndSwapChain;
 static ID3D11Device* GlobalDevice = nullptr;
 static ID3D11DeviceContext* GlobalDeviceContext = nullptr;
+static HANDLE statsMutex = OpenMutexA(SYNCHRONIZE, false, "statsMutex");
 static SharedMemory statsMemory(L"D3D11Stats", sizeof(PerFrameBuffer), false);
 static SharedMemory injectMemory(L"INJECTOR_MEMORY", sizeof(bool) + sizeof(DWORD) + sizeof(char), false);
 static SharedMemory messageMemory(L"MESSAGE_MEMORY", 255, false);
