@@ -7,6 +7,16 @@ typedef HRESULT(__stdcall *D3D11_DeviceContext_VSSetShaderType)(ID3D11DeviceCont
 typedef HRESULT(__stdcall *D3D11_DeviceContext_DrawIndexedType)(ID3D11DeviceContext*, UINT, UINT, INT); // 12
 typedef HRESULT(__stdcall *D3D11_DeviceContext_DrawType)(ID3D11DeviceContext*, UINT, UINT); // 13
 
+// From d3d11_3.h
+// 9 = PSSetShader
+// 20 = DrawIndexedInstanced
+// 21 = DrawInstanced
+// 23 = GSSetShader
+// 39 = DrawIndexedInstancedIndirect
+// 40 = DrawInstancedIndirect
+// 60 = HSSetShader
+// 64 = DSSetShader
+
 
 class DeviceContextOverride
 {
