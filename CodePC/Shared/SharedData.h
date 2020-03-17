@@ -15,8 +15,10 @@ struct PerFrameStats
 {
 	std::atomic_uint_fast32_t nrOfDrawCalls = 0;
 	std::atomic_uint_fast32_t nrOfDrawIndexedCalls = 0;
-	std::atomic_uint_fast32_t nrOfDrawInstanced = 0;
-	std::atomic_uint_fast32_t nrOfDrawIndexedInstanced = 0;
+	std::atomic_uint_fast32_t nrOfDrawInstancedCalls = 0;
+	std::atomic_uint_fast32_t nrOfDrawIndexedInstancedCalls = 0;
+	std::atomic_uint_fast32_t nrOfDrawInstancedIndirectCalls = 0;
+	std::atomic_uint_fast32_t nrOfDrawIndexedInstancedIndirectCalls = 0;
 	std::atomic_uint_fast32_t nrOfTotalVerticesDrawn = 0;
 	std::atomic_uint_fast32_t nrOfVertexShadersUsed = 0;
 	std::atomic_uint_fast32_t nrOfHullShadersUsed = 0;
@@ -29,8 +31,10 @@ struct PerFrameStats
 	{
 		nrOfDrawCalls.store(other.nrOfDrawCalls.load(), std::memory_order_relaxed);
 		nrOfDrawIndexedCalls.store(other.nrOfDrawIndexedCalls.load(), std::memory_order_relaxed);
-		nrOfDrawInstanced.store(other.nrOfDrawInstanced.load(), std::memory_order_relaxed);
-		nrOfDrawIndexedInstanced.store(other.nrOfDrawIndexedInstanced.load(), std::memory_order_relaxed);
+		nrOfDrawInstancedCalls.store(other.nrOfDrawInstancedCalls.load(), std::memory_order_relaxed);
+		nrOfDrawIndexedInstancedCalls.store(other.nrOfDrawIndexedInstancedCalls.load(), std::memory_order_relaxed);
+		nrOfDrawInstancedIndirectCalls.store(other.nrOfDrawInstancedIndirectCalls, std::memory_order_relaxed);
+		nrOfDrawIndexedInstancedIndirectCalls.store(other.nrOfDrawIndexedInstancedIndirectCalls, std::memory_order_relaxed);
 		nrOfTotalVerticesDrawn.store(other.nrOfTotalVerticesDrawn.load(), std::memory_order_relaxed);
 		nrOfVertexShadersUsed.store(other.nrOfVertexShadersUsed.load(), std::memory_order_relaxed);
 		nrOfHullShadersUsed.store(other.nrOfHullShadersUsed.load(), std::memory_order_relaxed);

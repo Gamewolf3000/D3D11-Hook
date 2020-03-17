@@ -39,7 +39,15 @@ std::string StatsText()
 
 	std::string toReturn = "Draw calls: " + std::to_string(stats.nrOfDrawCalls) + '\n';
 	toReturn += "DrawIndexed calls: " + std::to_string(stats.nrOfDrawIndexedCalls) + '\n';
+	toReturn += "DrawInstanced calls: " + std::to_string(stats.nrOfDrawInstancedCalls) + '\n';
+	toReturn += "DrawIndexedInstanced calls: " + std::to_string(stats.nrOfDrawIndexedInstancedCalls) + '\n';
+	toReturn += "DrawInstancedIndirect calls: " + std::to_string(stats.nrOfDrawInstancedIndirectCalls) + '\n';
+	toReturn += "DrawIndexedInstancedIndirect calls: " + std::to_string(stats.nrOfDrawIndexedInstancedIndirectCalls) + '\n';
 	toReturn += "VertexShaders used: " + std::to_string(stats.nrOfVertexShadersUsed) + '\n';
+	toReturn += "HullShaders used: " + std::to_string(stats.nrOfHullShadersUsed) + '\n';
+	toReturn += "DomainShaders used: " + std::to_string(stats.nrOfDomainShadersUsed) + '\n';
+	toReturn += "GeometryShaders used: " + std::to_string(stats.nrOfGeometryShadersUsed) + '\n';
+	toReturn += "PixelShaders used: " + std::to_string(stats.nrOfPixelShadersUsed) + '\n';
 	toReturn += "RasterizerStates used: " + std::to_string(stats.nrOfRasterizerStates) + '\n';
 
 	return toReturn;
