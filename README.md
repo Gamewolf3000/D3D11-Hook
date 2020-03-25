@@ -1,6 +1,6 @@
 # D3D11-Hook
 
-The purpose of this project is to create an application that gives both developers and players the chance to inspect how the rendering of D3D11 applications works, what resources are used, and how the api is utelized. It was inspired by the work of [Stefan Petersson](https://www.linkedin.com/in/stepet/) and his project known as [Triangelplockaren](https://www.youtube.com/watchv=qe079VilUJQ&feature=youtu.be). Stefan has also acted as a mentor of sort to me during this project, allowing me to discuss my findings and thoughts with him as well as providing help, tips, tricks as well as a template to start from.
+The purpose of this project is to create an application that gives both developers and players the chance to inspect how the rendering of D3D11 applications works, what resources are used, and how the api is utelized. It was inspired by the work of [Stefan Petersson](https://www.linkedin.com/in/stepet/) and his project known as [Triangelplockaren](https://www.youtube.com/watch?v=qe079VilUJQ&feature=youtu.be). Stefan has also acted as a mentor of sort to me during this project, allowing me to discuss my findings and thoughts with him as well as providing help, tips, tricks as well as a template to start from.
 
 ## Examples
 
