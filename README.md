@@ -4,7 +4,7 @@ The purpose of this project is to create an application that gives both develope
 
 ## Examples
 
-If you click the images below you will be directed to youtube videos showing the first version of the project applied on Metro 2033 and planet coaster.
+If you click the images below you will be directed to youtube videos showing the first version of the project applied on Metro 2033 and Planet Coaster.
 
 [![D3D11 Viewer (Metro 2033)](http://img.youtube.com/vi/VIZ59WWoPuc/0.jpg)](http://www.youtube.com/watch?v=VIZ59WWoPuc&feature=youtu.be "D3D11 Viewer (Metro 2033)")
 
