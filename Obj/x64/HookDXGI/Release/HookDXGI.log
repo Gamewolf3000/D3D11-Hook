@@ -1,1 +1,11 @@
-﻿
+﻿  HardHook.cpp
+  JobHandler.cpp
+  main.cpp
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4311: '<function-style-cast>': pointer truncation from 'HANDLE' to 'unsigned long'
+e:\vs projects\neo hook\codepc\incus\hookdxgi\deviceoverride.h(168): warning C4302: '<function-style-cast>': truncation from 'HANDLE' to 'unsigned long'
+  SharedMemory.cpp
+     Creating library E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64.lib and object E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64.exp
+  Generating code
+  All 489 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  HookDXGI.vcxproj -> E:\VS Projects\Neo Hook\CodePC\../Bin/x64/HookDXGI64.dll

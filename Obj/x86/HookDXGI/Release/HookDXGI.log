@@ -1,1 +1,9 @@
-﻿
+﻿  HardHook.cpp
+  JobHandler.cpp
+  main.cpp
+  SharedMemory.cpp
+     Creating library E:\VS Projects\Neo Hook\CodePC\../Bin/x86/HookDXGI32.lib and object E:\VS Projects\Neo Hook\CodePC\../Bin/x86/HookDXGI32.exp
+  Generating code
+  All 489 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  HookDXGI.vcxproj -> E:\VS Projects\Neo Hook\CodePC\../Bin/x86/HookDXGI32.dll

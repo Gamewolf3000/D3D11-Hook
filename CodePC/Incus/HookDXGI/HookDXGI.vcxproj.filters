@@ -25,6 +25,9 @@
     <ClCompile Include="SharedMemory.cpp">
       <Filter>Shared</Filter>
     </ClCompile>
+    <ClCompile Include="FakeID3D11Device.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="moduleDef.def">
@@ -58,6 +61,9 @@
       <Filter>Shared</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Shared\HardHook.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeID3D11Device.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
