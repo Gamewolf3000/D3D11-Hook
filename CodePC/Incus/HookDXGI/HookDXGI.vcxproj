@@ -179,6 +179,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Shared\HardHook.cpp" />
     <ClCompile Include="FakeID3D11Device.cpp" />
+    <ClCompile Include="FakeID3D11DeviceContext.cpp" />
     <ClCompile Include="JobHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SharedMemory.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="DeviceContextOverride.h" />
     <ClInclude Include="DeviceOverride.h" />
     <ClInclude Include="FakeID3D11Device.hpp" />
+    <ClInclude Include="FakeID3D11DeviceContext.h" />
     <ClInclude Include="GlobalData.h" />
     <ClInclude Include="JobHandler.h" />
     <ClInclude Include="SharedMemory.h" />
