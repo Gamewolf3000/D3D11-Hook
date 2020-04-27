@@ -1,9 +1,10 @@
 ﻿  HardHook.cpp
+  FakeID3D11Device.cpp
   JobHandler.cpp
   main.cpp
   SharedMemory.cpp
-     Creating library E:\VS Projects\Neo Hook\CodePC\../Bin/x86/HookDXGI32.lib and object E:\VS Projects\Neo Hook\CodePC\../Bin/x86/HookDXGI32.exp
+     Creating library C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x86/HookDXGI32.lib and object C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x86/HookDXGI32.exp
   Generating code
-  All 489 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 569 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  HookDXGI.vcxproj -> E:\VS Projects\Neo Hook\CodePC\../Bin/x86/HookDXGI32.dll
+  HookDXGI.vcxproj -> C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x86/HookDXGI32.dll

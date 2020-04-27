@@ -10,6 +10,8 @@
 #include "JobHandler.h"
 #include "SharedMemory.h"
 #include "../../Shared/SharedData.h"
+#include <FakeID3D11Device.hpp>
+
 
 #include <locale>
 #include <codecvt>
@@ -222,11 +224,20 @@ HRESULT WINAPI CreateDeviceOverride(
 	D3D_FEATURE_LEVEL       *pFeatureLevel,
 	ID3D11DeviceContext     **ppImmediateContext)
 {
+	bool startedNull = (ppDevice == NULL || ppImmediateContext == NULL);
 	//MessageBoxA(0, "CreateDevice called!", "", 0);
 	hook_CreateDevice.Restore();
 	HRESULT hr = D3D11CreateDevice(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels, SDKVersion, ppDevice, pFeatureLevel, ppImmediateContext);
 	GlobalDevice = *ppDevice;
 	GlobalDeviceContext = *ppImmediateContext;
+	FakeID3D11Device* test = nullptr;
+	if (hr == S_OK && startedNull != true && ppDevice != nullptr && ppDevice != NULL && *ppDevice != nullptr && *ppDevice != nullptr)
+	{
+		test = new FakeID3D11Device(*ppDevice);
+		*ppDevice = test;
+		//MessageBoxA(0, "We created a fake device!", "", 0);
+	}
+	//*ppDevice = test;
 	hook_CreateDevice.Inject();
 
 	return hr;
@@ -247,6 +258,7 @@ HRESULT WINAPI CreateDeviceAndSwapChainOverride(
 	ID3D11DeviceContext        **ppImmediateContext
 )
 {
+	bool startedNull = (ppDevice == NULL || ppImmediateContext == NULL);
 	//MessageBoxA(0, "CreateDeviceAndSwapChain called!", "", 0);
 	hook_CreateDeviceAndSwapChain.Restore();
 	//Flags |= D3D11_CREATE_DEVICE_DEBUG;
@@ -254,6 +266,13 @@ HRESULT WINAPI CreateDeviceAndSwapChainOverride(
 	HRESULT hr = D3D11CreateDeviceAndSwapChain(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels, SDKVersion, pSwapChainDesc, ppSwapChain, ppDevice, pFeatureLevel, ppImmediateContext);
 	GlobalDevice = *ppDevice;
 	GlobalDeviceContext = *ppImmediateContext;
+	FakeID3D11Device* test = nullptr;
+	if (hr == S_OK && startedNull != true && ppDevice != nullptr && ppDevice != NULL && *ppDevice != nullptr && *ppDevice != nullptr)
+	{
+		test = new FakeID3D11Device(*ppDevice);
+		*ppDevice = test;
+		//MessageBoxA(0, "We created a fake device!", "", 0);
+	}
 	hook_CreateDeviceAndSwapChain.Inject();
 	return hr;
 }

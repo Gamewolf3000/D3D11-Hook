@@ -1,1 +1,8 @@
-﻿
+﻿  HardHook.cpp
+  FakeID3D11Device.cpp
+  JobHandler.cpp
+  main.cpp
+  SharedMemory.cpp
+  Generating Code...
+     Creating library C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x86/HookDXGI32D.lib and object C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x86/HookDXGI32D.exp
+  HookDXGI.vcxproj -> C:\Users\jzn\Documents\D3D11 Viewer\D3D11-Hook\CodePC\../Bin/x86/HookDXGI32D.dll

@@ -1,20 +1,21 @@
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\vc141.pdb
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\sharedmemory.obj
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\main.obj
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\jobhandler.obj
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hardhook.obj
-e:\vs projects\neo hook\bin\x64\hookdxgi64.lib
-e:\vs projects\neo hook\bin\x64\hookdxgi64.exp
-e:\vs projects\neo hook\bin\x64\hookdxgi64.ipdb
-e:\vs projects\neo hook\bin\x64\hookdxgi64.iobj
-e:\vs projects\neo hook\bin\x64\hookdxgi64.dll
-e:\vs projects\neo hook\bin\x64\hookdxgi64.pdb
-e:\vs projects\neo hook\codepc\../bin/x64/hookdxgi64.pdb
-e:\vs projects\neo hook\codepc\../bin/x64/hookdxgi64.dll
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\cl.command.1.tlog
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\cl.read.1.tlog
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\cl.write.1.tlog
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\hookdxgi.write.1u.tlog
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\link.command.1.tlog
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\link.read.1.tlog
-e:\vs projects\neo hook\obj\x64\hookdxgi\release\hookdxgi.tlog\link.write.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\vc141.pdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\sharedmemory.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\main.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\jobhandler.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\fakeid3d11device.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hardhook.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x64\hookdxgi64.lib
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x64\hookdxgi64.exp
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x64\hookdxgi64.ipdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x64\hookdxgi64.iobj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x64\hookdxgi64.dll
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x64\hookdxgi64.pdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\../bin/x64/hookdxgi64.pdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\../bin/x64/hookdxgi64.dll
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\cl.command.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\cl.read.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\cl.write.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\hookdxgi.write.1u.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\link.command.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\link.read.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x64\hookdxgi\release\hookdxgi.tlog\link.write.1.tlog

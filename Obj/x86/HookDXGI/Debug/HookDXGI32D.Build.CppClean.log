@@ -1,19 +1,22 @@
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\vc141.pdb
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\vc141.idb
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\sharedmemory.obj
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\main.obj
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\jobhandler.obj
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hardhook.obj
-e:\vs projects\neo hook\bin\x86\hookdxgid.lib
-e:\vs projects\neo hook\bin\x86\hookdxgid.exp
-e:\vs projects\neo hook\bin\x86\hookdxgid.dll
-e:\vs projects\neo hook\bin\x86\hookdxgid.ilk
-e:\vs projects\neo hook\bin\x86\hookdxgid.pdb
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\cl.command.1.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\cl.read.1.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\cl.write.1.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\hookdxgi.write.1u.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.command.1.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.delete.1.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.read.1.tlog
-e:\vs projects\neo hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.write.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\vc141.pdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\vc141.idb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\sharedmemory.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\main.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\jobhandler.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\fakeid3d11device.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hardhook.obj
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x86\hookdxgi32d.lib
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x86\hookdxgi32d.exp
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x86\hookdxgi32d.ilk
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x86\hookdxgi32d.dll
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\bin\x86\hookdxgi32d.pdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\../bin/x86/hookdxgi32d.pdb
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\../bin/x86/hookdxgi32d.dll
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\codepc\../bin/x86/hookdxgi32d.ilk
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\cl.command.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\cl.read.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\cl.write.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\hookdxgi.write.1u.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.command.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.read.1.tlog
+c:\users\jzn\documents\d3d11 viewer\d3d11-hook\obj\x86\hookdxgi\debug\hookdxgi.tlog\link.write.1.tlog
