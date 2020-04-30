@@ -11,7 +11,7 @@
 #include "SharedMemory.h"
 #include "../../Shared/SharedData.h"
 #include <FakeID3D11Device.hpp>
-
+#include <FakeID3D11DeviceContext.h>
 
 #include <locale>
 #include <codecvt>
@@ -230,14 +230,16 @@ HRESULT WINAPI CreateDeviceOverride(
 	HRESULT hr = D3D11CreateDevice(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels, SDKVersion, ppDevice, pFeatureLevel, ppImmediateContext);
 	GlobalDevice = *ppDevice;
 	GlobalDeviceContext = *ppImmediateContext;
-	FakeID3D11Device* test = nullptr;
-	if (hr == S_OK && startedNull != true && ppDevice != nullptr && ppDevice != NULL && *ppDevice != nullptr && *ppDevice != nullptr)
+	FakeID3D11Device* fakeDevice = nullptr;
+	FakeID3D11DeviceContext* fakeDeviceContext = nullptr;
+	if (hr == S_OK && startedNull != true && ppDevice != nullptr && ppDevice != NULL && *ppDevice != nullptr && *ppDevice != nullptr
+		&& ppImmediateContext != nullptr && ppImmediateContext != NULL && *ppImmediateContext != nullptr && *ppImmediateContext != nullptr)
 	{
-		test = new FakeID3D11Device(*ppDevice);
-		*ppDevice = test;
-		//MessageBoxA(0, "We created a fake device!", "", 0);
+		fakeDevice = new FakeID3D11Device(*ppDevice);
+		fakeDeviceContext = new FakeID3D11DeviceContext(*ppImmediateContext, fakeDevice);
+		*ppDevice = fakeDevice;
+		*ppImmediateContext = fakeDeviceContext;
 	}
-	//*ppDevice = test;
 	hook_CreateDevice.Inject();
 
 	return hr;
@@ -266,12 +268,15 @@ HRESULT WINAPI CreateDeviceAndSwapChainOverride(
 	HRESULT hr = D3D11CreateDeviceAndSwapChain(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels, SDKVersion, pSwapChainDesc, ppSwapChain, ppDevice, pFeatureLevel, ppImmediateContext);
 	GlobalDevice = *ppDevice;
 	GlobalDeviceContext = *ppImmediateContext;
-	FakeID3D11Device* test = nullptr;
-	if (hr == S_OK && startedNull != true && ppDevice != nullptr && ppDevice != NULL && *ppDevice != nullptr && *ppDevice != nullptr)
+	FakeID3D11Device* fakeDevice = nullptr;
+	FakeID3D11DeviceContext* fakeDeviceContext = nullptr;
+	if (hr == S_OK && startedNull != true && ppDevice != nullptr && ppDevice != NULL && *ppDevice != nullptr && *ppDevice != nullptr
+		&& ppImmediateContext != nullptr && ppImmediateContext != NULL && *ppImmediateContext != nullptr && *ppImmediateContext != nullptr)
 	{
-		test = new FakeID3D11Device(*ppDevice);
-		*ppDevice = test;
-		//MessageBoxA(0, "We created a fake device!", "", 0);
+		fakeDevice = new FakeID3D11Device(*ppDevice);
+		fakeDeviceContext = new FakeID3D11DeviceContext(*ppImmediateContext, fakeDevice);
+		*ppDevice = fakeDevice;
+		*ppImmediateContext = fakeDeviceContext;
 	}
 	hook_CreateDeviceAndSwapChain.Inject();
 	return hr;

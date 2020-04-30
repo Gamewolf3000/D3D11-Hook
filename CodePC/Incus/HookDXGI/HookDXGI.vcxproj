@@ -180,6 +180,8 @@
     <ClCompile Include="..\..\Shared\HardHook.cpp" />
     <ClCompile Include="FakeID3D11Device.cpp" />
     <ClCompile Include="FakeID3D11DeviceContext.cpp" />
+    <ClCompile Include="FakeIDXGIFactory.cpp" />
+    <ClCompile Include="FakeIDXGISwapChain.cpp" />
     <ClCompile Include="JobHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SharedMemory.cpp" />
@@ -195,6 +197,8 @@
     <ClInclude Include="DeviceOverride.h" />
     <ClInclude Include="FakeID3D11Device.hpp" />
     <ClInclude Include="FakeID3D11DeviceContext.h" />
+    <ClInclude Include="FakeIDXGIFactory.h" />
+    <ClInclude Include="FakeIDXGISwapChain.h" />
     <ClInclude Include="GlobalData.h" />
     <ClInclude Include="JobHandler.h" />
     <ClInclude Include="SharedMemory.h" />

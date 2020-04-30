@@ -31,6 +31,12 @@
     <ClCompile Include="FakeID3D11DeviceContext.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="FakeIDXGISwapChain.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeIDXGIFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="moduleDef.def">
@@ -70,6 +76,12 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="FakeID3D11DeviceContext.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeIDXGISwapChain.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeIDXGIFactory.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>

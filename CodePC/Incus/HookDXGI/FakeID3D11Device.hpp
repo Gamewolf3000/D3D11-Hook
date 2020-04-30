@@ -4,7 +4,7 @@
 #include <utility>
 #include <cstdint>
 
-#include "FakeID3D11DeviceContext.h"
+class FakeID3D11DeviceContext;
 
 struct DeviceInfo
 {
@@ -22,18 +22,14 @@ class FakeID3D11Device : public ID3D11Device5
 {
 private:
 	ID3D11Device5* realDevice;
-	FakeID3D11DeviceContext* immediateContext;
+	FakeID3D11DeviceContext* immediateContext = nullptr;
 
 public:
-	FakeID3D11Device(ID3D11Device* real, FakeID3D11DeviceContext* immediateContext);
-	//FakeID3D11Device(const FakeID3D11Device& other) : ID3D11Device5(other) {};
-	//FakeID3D11Device(FakeID3D11Device&& other) : ID3D11Device5(std::move(other)) {};
-	//FakeID3D11Device& operator=(const FakeID3D11Device& other);
-	//FakeID3D11Device& operator=(FakeID3D11Device&& other);
+	FakeID3D11Device(ID3D11Device* real);
 	virtual ~FakeID3D11Device() {};
+	void SetImmediateContext(FakeID3D11DeviceContext* context);
 
 	DeviceInfo info;
-
 	
 	// Inherited via ID3D11Device5 70
 	template<typename Q>

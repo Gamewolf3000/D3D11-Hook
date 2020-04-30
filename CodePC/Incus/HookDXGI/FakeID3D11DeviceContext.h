@@ -5,6 +5,8 @@
 #include <utility>
 #include <cstdint>
 
+class FakeID3D11Device;
+
 struct DeviceContextInfo
 {
 	std::uint_fast32_t numberOfVertexShadersSet = 0;
@@ -20,9 +22,10 @@ class FakeID3D11DeviceContext : public ID3D11DeviceContext4
 {
 private:
 	ID3D11DeviceContext4* realDeviceContext;
+	FakeID3D11Device* creatorDevice;
 
 public:
-	FakeID3D11DeviceContext(ID3D11DeviceContext* real);
+	FakeID3D11DeviceContext(ID3D11DeviceContext* real, FakeID3D11Device* creator);
 
 	// Inherited via ID3D11DeviceContext4 (149 + 1)
 	template<typename Q>

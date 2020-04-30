@@ -1,9 +1,14 @@
 #include "FakeID3D11Device.hpp"
+#include "FakeID3D11DeviceContext.h"
 
-FakeID3D11Device::FakeID3D11Device(ID3D11Device * real, FakeID3D11DeviceContext* immediateContext) : ID3D11Device5()
+FakeID3D11Device::FakeID3D11Device(ID3D11Device * real) : ID3D11Device5()
 {
 	realDevice = static_cast<ID3D11Device5*>(real);
-	this->immediateContext = immediateContext;
+}
+
+void FakeID3D11Device::SetImmediateContext(FakeID3D11DeviceContext * context)
+{
+	immediateContext = context;
 }
 
 HRESULT __stdcall FakeID3D11Device::QueryInterface(REFIID riid, void ** ppvObject)
@@ -69,7 +74,6 @@ HRESULT __stdcall FakeID3D11Device::CreateInputLayout(const D3D11_INPUT_ELEMENT_
 HRESULT __stdcall FakeID3D11Device::CreateVertexShader(const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11VertexShader ** ppVertexShader)
 {
 	++info.numberOfCreatedVertexShaders;
-	MessageBoxA(0, "We created a vertex shader using the fake device!", "", 0);
 	return realDevice->CreateVertexShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppVertexShader);
 }
 
@@ -154,7 +158,7 @@ HRESULT __stdcall FakeID3D11Device::CreateDeferredContext(UINT ContextFlags, ID3
 	HRESULT result = realDevice->CreateDeferredContext(ContextFlags, ppDeferredContext);
 	if (result == S_OK)
 	{
-		FakeID3D11DeviceContext* fake = new FakeID3D11DeviceContext(*ppDeferredContext);
+		FakeID3D11DeviceContext* fake = new FakeID3D11DeviceContext(*ppDeferredContext, this);
 		*ppDeferredContext = fake;
 		++info.numberOfCreatedContexts;
 	}
@@ -239,12 +243,20 @@ UINT __stdcall FakeID3D11Device::GetExceptionMode(void)
 
 void __stdcall FakeID3D11Device::GetImmediateContext1(ID3D11DeviceContext1 ** ppImmediateContext)
 {
-	realDevice->GetImmediateContext1(ppImmediateContext);
+	immediateContext->AddRef();
+	*ppImmediateContext = immediateContext;
 }
 
 HRESULT __stdcall FakeID3D11Device::CreateDeferredContext1(UINT ContextFlags, ID3D11DeviceContext1 ** ppDeferredContext)
 {
-	return realDevice->CreateDeferredContext1(ContextFlags, ppDeferredContext);
+	HRESULT result = realDevice->CreateDeferredContext1(ContextFlags, ppDeferredContext);
+	if (result == S_OK)
+	{
+		FakeID3D11DeviceContext* fake = new FakeID3D11DeviceContext(*ppDeferredContext, this);
+		*ppDeferredContext = fake;
+		++info.numberOfCreatedContexts;
+	}
+	return result;
 }
 
 HRESULT __stdcall FakeID3D11Device::CreateBlendState1(const D3D11_BLEND_DESC1 * pBlendStateDesc, ID3D11BlendState1 ** ppBlendState)
@@ -274,12 +286,20 @@ HRESULT __stdcall FakeID3D11Device::OpenSharedResourceByName(LPCWSTR lpName, DWO
 
 void __stdcall FakeID3D11Device::GetImmediateContext2(ID3D11DeviceContext2 ** ppImmediateContext)
 {
-	realDevice->GetImmediateContext2(ppImmediateContext);
+	immediateContext->AddRef();
+	*ppImmediateContext = immediateContext;
 }
 
 HRESULT __stdcall FakeID3D11Device::CreateDeferredContext2(UINT ContextFlags, ID3D11DeviceContext2 ** ppDeferredContext)
 {
-	return realDevice->CreateDeferredContext2(ContextFlags, ppDeferredContext);
+	HRESULT result = realDevice->CreateDeferredContext2(ContextFlags, ppDeferredContext);
+	if (result == S_OK)
+	{
+		FakeID3D11DeviceContext* fake = new FakeID3D11DeviceContext(*ppDeferredContext, this);
+		*ppDeferredContext = fake;
+		++info.numberOfCreatedContexts;
+	}
+	return result;
 }
 
 void __stdcall FakeID3D11Device::GetResourceTiling(ID3D11Resource * pTiledResource, UINT * pNumTilesForEntireResource, D3D11_PACKED_MIP_DESC * pPackedMipDesc, D3D11_TILE_SHAPE * pStandardTileShapeForNonPackedMips, UINT * pNumSubresourceTilings, UINT FirstSubresourceTilingToGet, D3D11_SUBRESOURCE_TILING * pSubresourceTilingsForNonPackedMips)
@@ -329,12 +349,20 @@ HRESULT __stdcall FakeID3D11Device::CreateQuery1(const D3D11_QUERY_DESC1 * pQuer
 
 void __stdcall FakeID3D11Device::GetImmediateContext3(ID3D11DeviceContext3 ** ppImmediateContext)
 {
-	realDevice->GetImmediateContext3(ppImmediateContext);
+	immediateContext->AddRef();
+	*ppImmediateContext = immediateContext;
 }
 
 HRESULT __stdcall FakeID3D11Device::CreateDeferredContext3(UINT ContextFlags, ID3D11DeviceContext3 ** ppDeferredContext)
 {
-	return realDevice->CreateDeferredContext3(ContextFlags, ppDeferredContext);
+	HRESULT result = realDevice->CreateDeferredContext3(ContextFlags, ppDeferredContext);
+	if (result == S_OK)
+	{
+		FakeID3D11DeviceContext* fake = new FakeID3D11DeviceContext(*ppDeferredContext, this);
+		*ppDeferredContext = fake;
+		++info.numberOfCreatedContexts;
+	}
+	return result;
 }
 
 void __stdcall FakeID3D11Device::WriteToSubresource(ID3D11Resource * pDstResource, UINT DstSubresource, const D3D11_BOX * pDstBox, const void * pSrcData, UINT SrcRowPitch, UINT SrcDepthPitch)
