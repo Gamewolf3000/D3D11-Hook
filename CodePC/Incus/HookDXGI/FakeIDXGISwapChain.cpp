@@ -1,5 +1,10 @@
 #include "FakeIDXGISwapChain.h"
 
+FakeIDXGISwapChain::FakeIDXGISwapChain(IDXGISwapChain * real)
+{
+	realSwapChain = static_cast<IDXGISwapChain4*>(real);
+}
+
 HRESULT __stdcall FakeIDXGISwapChain::QueryInterface(REFIID riid, void ** ppvObject)
 {
 	return realSwapChain->QueryInterface(riid, ppvObject);

@@ -8,7 +8,7 @@ private:
 	IDXGIFactory6* realFactory;
 
 public:
-	FakeIDXGIFactory(IDXGIFactory6* real);
+	FakeIDXGIFactory(IDXGIFactory* real);
 
 	// Inherited via IDXGIFactory6
 	template<typename Q>

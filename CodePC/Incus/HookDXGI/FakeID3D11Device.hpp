@@ -28,6 +28,7 @@ public:
 	FakeID3D11Device(ID3D11Device* real);
 	virtual ~FakeID3D11Device() {};
 	void SetImmediateContext(FakeID3D11DeviceContext* context);
+	ID3D11Device5* GetReal();
 
 	DeviceInfo info;
 	

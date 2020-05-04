@@ -12,6 +12,8 @@
 #include "../../Shared/SharedData.h"
 #include <FakeID3D11Device.hpp>
 #include <FakeID3D11DeviceContext.h>
+#include <FakeIDXGISwapChain.h>
+#include <FakeIDXGIFactory.h>
 
 #include <locale>
 #include <codecvt>
@@ -32,6 +34,9 @@ static HardHook hook_CreateProcessW;
 static HardHook hook_FreeLibrary;
 static HardHook hook_CreateDevice;
 static HardHook hook_CreateDeviceAndSwapChain;
+static HardHook hook_CreateDXGIFactory;
+static HardHook hook_CreateDXGIFactory1;
+static HardHook hook_CreateDXGIFactory2;
 static ID3D11Device* GlobalDevice = nullptr;
 static ID3D11DeviceContext* GlobalDeviceContext = nullptr;
 static HANDLE statsMutex = OpenMutexA(SYNCHRONIZE, false, "statsMutex");
@@ -279,5 +284,59 @@ HRESULT WINAPI CreateDeviceAndSwapChainOverride(
 		*ppImmediateContext = fakeDeviceContext;
 	}
 	hook_CreateDeviceAndSwapChain.Inject();
+	return hr;
+}
+
+HRESULT WINAPI CreateDXGIFactoryOverride(
+	REFIID riid,
+	void   **ppFactory
+)
+{
+	hook_CreateDXGIFactory.Restore();
+	HRESULT hr = CreateDXGIFactory(riid, ppFactory);
+
+	if (hr == S_OK)
+	{
+		FakeIDXGIFactory* fakeFactory = new FakeIDXGIFactory(static_cast<IDXGIFactory*>(*ppFactory));
+	}
+
+	hook_CreateDXGIFactory.Inject();
+	return hr;
+}
+
+HRESULT WINAPI CreateDXGIFactory1Override(
+	REFIID riid,
+	void   **ppFactory
+)
+{
+	hook_CreateDXGIFactory1.Restore();
+	HRESULT hr = CreateDXGIFactory1(riid, ppFactory);
+
+	if (hr == S_OK)
+	{
+		FakeIDXGIFactory* fakeFactory = new FakeIDXGIFactory(static_cast<IDXGIFactory*>(*ppFactory));
+		*ppFactory = fakeFactory;
+	}
+
+	hook_CreateDXGIFactory1.Inject();
+	return hr;
+}
+
+HRESULT WINAPI CreateDXGIFactory2Override(
+	UINT Flags,
+	REFIID riid,
+	void   **ppFactory
+)
+{
+	hook_CreateDXGIFactory2.Restore();
+	HRESULT hr = CreateDXGIFactory2(Flags, riid, ppFactory);
+
+	if (hr == S_OK)
+	{
+		FakeIDXGIFactory* fakeFactory = new FakeIDXGIFactory(static_cast<IDXGIFactory*>(*ppFactory));
+		*ppFactory = fakeFactory;
+	}
+
+	hook_CreateDXGIFactory2.Inject();
 	return hr;
 }

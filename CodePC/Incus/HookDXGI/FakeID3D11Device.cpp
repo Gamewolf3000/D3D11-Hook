@@ -11,6 +11,11 @@ void FakeID3D11Device::SetImmediateContext(FakeID3D11DeviceContext * context)
 	immediateContext = context;
 }
 
+ID3D11Device5 * FakeID3D11Device::GetReal()
+{
+	return realDevice;
+}
+
 HRESULT __stdcall FakeID3D11Device::QueryInterface(REFIID riid, void ** ppvObject)
 {
 	return realDevice->QueryInterface(riid, ppvObject);

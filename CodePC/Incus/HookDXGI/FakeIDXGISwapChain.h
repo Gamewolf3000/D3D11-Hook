@@ -8,7 +8,7 @@ private:
 	IDXGISwapChain4* realSwapChain;
 
 public:
-	FakeIDXGISwapChain(IDXGISwapChain4* real);
+	FakeIDXGISwapChain(IDXGISwapChain* real);
 
 	// Inherited via IDXGISwapChain4 (42)
 	template<typename Q>

@@ -151,6 +151,9 @@ DWORD WINAPI prepareHookThreadFunc( LPVOID lpParam )
 	{
 		hook_CreateDevice.Setup(reinterpret_cast<voidFunc>(GetProcAddress(hD3D, "D3D11CreateDevice")), reinterpret_cast<voidFunc>(CreateDeviceOverride));
 		hook_CreateDeviceAndSwapChain.Setup(reinterpret_cast<voidFunc>(GetProcAddress(hD3D, "D3D11CreateDeviceAndSwapChain")), reinterpret_cast<voidFunc>(CreateDeviceAndSwapChainOverride));
+		hook_CreateDXGIFactory.Setup(reinterpret_cast<voidFunc>(GetProcAddress(hD3D, "CreateDXGIFactory")), reinterpret_cast<voidFunc>(CreateDXGIFactoryOverride));
+		hook_CreateDXGIFactory1.Setup(reinterpret_cast<voidFunc>(GetProcAddress(hD3D, "CreateDXGIFactory1")), reinterpret_cast<voidFunc>(CreateDXGIFactory1Override));
+		hook_CreateDXGIFactory2.Setup(reinterpret_cast<voidFunc>(GetProcAddress(hD3D, "CreateDXGIFactory2")), reinterpret_cast<voidFunc>(CreateDXGIFactory2Override));
 		InitiateOverride();
 	}
 	//MessageBoxA(0, "Prepare done!", "", 0);
