@@ -12,7 +12,7 @@ public:
 
 	// Inherited via IDXGIFactory6
 	template<typename Q>
-	HRESULT __stdcall QueryInterface(Q ** pp);
+	HRESULT __stdcall QueryInterface(Q ** pp) override;
 	virtual HRESULT __stdcall QueryInterface(REFIID riid, void ** ppvObject) override;
 	virtual ULONG __stdcall AddRef(void) override;
 	virtual ULONG __stdcall Release(void) override;

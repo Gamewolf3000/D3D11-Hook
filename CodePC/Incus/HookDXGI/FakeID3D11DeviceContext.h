@@ -29,7 +29,7 @@ public:
 
 	// Inherited via ID3D11DeviceContext4 (149 + 1)
 	template<typename Q>
-	HRESULT __stdcall QueryInterface(Q ** pp);
+	HRESULT __stdcall QueryInterface(Q ** pp) override;
 
 
 	/*0*/virtual HRESULT __stdcall QueryInterface(REFIID riid, void ** ppvObject) override;

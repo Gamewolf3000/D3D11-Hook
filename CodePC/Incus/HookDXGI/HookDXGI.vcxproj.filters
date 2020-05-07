@@ -84,5 +84,8 @@
     <ClInclude Include="FakeIDXGIFactory.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="FakeD3DHelpers.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -195,6 +195,7 @@
     <ClInclude Include="D3DResolve.h" />
     <ClInclude Include="DeviceContextOverride.h" />
     <ClInclude Include="DeviceOverride.h" />
+    <ClInclude Include="FakeD3DHelpers.h" />
     <ClInclude Include="FakeID3D11Device.hpp" />
     <ClInclude Include="FakeID3D11DeviceContext.h" />
     <ClInclude Include="FakeIDXGIFactory.h" />
