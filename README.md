@@ -12,7 +12,9 @@ If you click the images below you will be directed to youtube videos showing the
 
 ## Features
 
-Currently the application allows for the inspection of the number of times different resources and states are set each frame in an applicaton, as well as toggling wireframe mode for specific rasterizer states. [//]: # (More features are planned in future versions and can be found in the next section.
+Currently the application allows for the inspection of the number of times different resources and states are set each frame in an applicaton, as well as toggling wireframe mode for specific rasterizer states. 
+<!---
+More features are planned in future versions and can be found in the next section.
 
 ## Future work
 
@@ -22,4 +24,6 @@ Other future plans for the project include (but are not limited to)
 - More detailed information such as number of buffers alive
 - Viewing vertexbuffers, textures, backbuffers and more
 - Extraction of meshes and textures from games
-- Replacing textures in games with custom ones)
+- Replacing textures in games with custom ones
+
+-->
